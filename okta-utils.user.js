@@ -6,7 +6,7 @@
 // @grant       GM.registerMenuCommand
 // @grant       GM.setClipboard
 // @author      Ismael Lopez
-// @version     1.0.1
+// @version     1.1
 // ==/UserScript==
 
 GM.registerMenuCommand('Copy Access Token', () => {

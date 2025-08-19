@@ -1,15 +1,15 @@
 // ==UserScript==
-// @name        Okta Token
+// @name        Okta Utils
 // @namespace   https://github.com/attn-xplor/userscripts
 // @match       https://my*.clearent.net/ui/*
 // @match       http://localhost:4200/*
 // @grant       GM.registerMenuCommand
 // @grant       GM.setClipboard
 // @author      Ismael Lopez
-// @version     1.0
+// @version     1.0.1
 // ==/UserScript==
 
-GM.registerMenuCommand('Copy Token', () => {
+GM.registerMenuCommand('Copy Access Token', () => {
   const key = (window.location.hostname === 'my.clearent.net')
     ? 'oidc.user:https://auth.clearent.net/oauth2/aus4ulyubshD7M0yf697:0oa6ggt30dFSxSVxX697'
     : 'oidc.user:https://auth-sb.clearent.net/oauth2/aus3a1kavt9qzEcsz1d7:0oa3a1ic7mGSRLqrZ1d7';

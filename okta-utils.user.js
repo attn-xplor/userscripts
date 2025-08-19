@@ -1,5 +1,6 @@
 // ==UserScript==
 // @name        Okta Token
+// @namespace   https://github.com/attn-xplor/userscripts
 // @match       https://my*.clearent.net/ui/*
 // @match       http://localhost:4200/*
 // @grant       GM.registerMenuCommand

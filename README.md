@@ -11,3 +11,7 @@ Copies your current Okta Access Token to your clipboard. Useful for Postman requ
 
 # [Cache Utils](//github.com/attn-xplor/userscripts/raw/refs/heads/trunk/cache-utils.user.js)
 Utilities for clearing the cache, but leaves Single Spa import overrides intact.
+
+# [HNK Utils](//github.com/attn-xplor/userscripts/raw/refs/heads/trunk/hnk-utils.user.js)
+Merchant Portal's merchant selector makes it hard to copy the currently-selected
+merchant's DBA and/or HNK. This script copies that information to your clipboard.

@@ -1,5 +1,8 @@
 # Xplor User Scripts
 
+## Overview
+Make your day a little easier. Once you have Violentmonkey installed, click on the links below to load an "Install" page for each user script.
+
 ## Requirements
 [Violentmonkey FireFox Extension](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/)
 

@@ -5,21 +5,9 @@
 // @match       http://localhost:4200/*
 // @grant       GM.registerMenuCommand
 // @grant       GM.setClipboard
-// @version     1.0
+// @version     1.1
 // @author      Ismael J Lopez
-// @description 8/19/2025, 12:08:00 PM
 // ==/UserScript==
-
-GM.registerMenuCommand('Copy HNK', () => {
-  const el = document.getElementById('merchantData');
-  const parts = el.textContent.split(' - ');
-  const hnk = parts.at(-1);
-  if (!hnk) {
-    alert('Could not get HNK');
-    return;
-  }
-  GM.setClipboard(hnk);
-});
 
 GM.registerMenuCommand('Copy DBA', () => {
   const el = document.getElementById('merchantData');
@@ -32,7 +20,18 @@ GM.registerMenuCommand('Copy DBA', () => {
   GM.setClipboard(name);
 });
 
-GM.registerMenuCommand('Copy Name & HNK', () => {
+GM.registerMenuCommand('Copy HNK', () => {
+  const el = document.getElementById('merchantData');
+  const parts = el.textContent.split(' - ');
+  const hnk = parts.at(-1);
+  if (!hnk) {
+    alert('Could not get HNK');
+    return;
+  }
+  GM.setClipboard(hnk);
+});
+
+GM.registerMenuCommand('Copy DBA & HNK', () => {
   const el = document.getElementById('merchantData');
   const parts = el.textContent.split(' - ');
   const name = parts.slice(0, -1);

@@ -4,9 +4,8 @@
 // @match       https://my*.clearent.net/ui/*
 // @match       http://localhost:4200/*
 // @grant       GM.registerMenuCommand
-// @version     1.0
+// @version     1.1
 // @author      Ismael Lopez
-// @description 4/17/2025, 11:29:54 AM
 // ==/UserScript==
 
 GM.registerMenuCommand('Clear Session', () => {

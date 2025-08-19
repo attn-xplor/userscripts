@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name        Okta Utils
+// @name        Okta Utilities
 // @namespace   https://github.com/attn-xplor/userscripts
 // @match       https://my*.clearent.net/ui/*
 // @match       http://localhost:4200/*
 // @grant       GM.registerMenuCommand
 // @grant       GM.setClipboard
+// @version     1.2
 // @author      Ismael Lopez
-// @version     1.1
 // ==/UserScript==
 
 GM.registerMenuCommand('Copy Access Token', () => {

@@ -31,6 +31,9 @@ function clearLocalCache() {
       'import-map-override:merchant-ticketing-automation-ui',
       'import-map-override:notification-preferences-ui',
       'import-map-overrides-disabled',
+      'TanstackQueryDevtools.open',
+      'TanstackQueryDevtools.pip_open',
+      'TanstackQueryDevtools.theme_preference',
     ];
 
     const mem = [];

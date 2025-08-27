@@ -4,7 +4,7 @@
 // @match       https://my*.clearent.net/ui/*
 // @match       http://localhost:4200/*
 // @grant       GM.registerMenuCommand
-// @version     1.1
+// @version     1.2
 // @author      Ismael Lopez
 // ==/UserScript==
 

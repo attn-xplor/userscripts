@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name        Config Patch
 // @namespace   https://github.com/attn-xplor/userscripts
-// @match       https://my-qa.clearent.net/*
-// @match       https://my.clearent.net/*
+// @match       https://*.clearent.net/*
 // @match       http://localhost:4200/*
 // @grant       GM.registerMenuCommand
 // @grant       GM.setValue
 // @grant       GM.getValue
-// @version     1.1.1
+// @version     1.2.0
 // @author      Andrew Neth
 // @run-at      document-start
 // @require     https://raw.githubusercontent.com/LaNsHoR/native-json-editor/df52f26a908127f1f91cae9793aae6b754a2bbfb/json-editor.js

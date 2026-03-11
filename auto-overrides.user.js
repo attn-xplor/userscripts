@@ -2,11 +2,11 @@
 // @name        Automatic override toggle
 // @namespace   https://github.com/attn-xplor/userscripts
 // @match       https://*.clearent.net/*
-// @version     1.1.1
+// @version     1.1.2
 // @author      Andrew Neth
 // ==/UserScript==
 
-const imo = window.importMapOverrides;
+const imo = unsafeWindow.importMapOverrides;
 
 async function checkMfe([mfe, url]) {
   const isEnabled = !imo.isDisabled(mfe);

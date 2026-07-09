@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ADO | Backlog Patch
 // @namespace   https://github.com/attn-xplor/userscripts
-// @version     1.0.0
+// @version     1.1.0
 // @match       https://dev.azure.com/xplortechnologies/Nexus/_sprints/backlog/*
 // @grant       GM.registerMenuCommand
 // @grant       GM.setValue
@@ -14,6 +14,35 @@
 
 "use strict";
 
+GM.registerMenuCommand("Edit Patch", showModal);
+
+function patchTextContent(tbody, map) {
+  const walker = document.createTreeWalker(tbody, NodeFilter.SHOW_TEXT);
+  let node;
+  while ((node = walker.nextNode())) {
+    for (const [original, replacement] of Object.entries(map)) {
+      node.textContent = node.textContent.replaceAll(original, replacement);
+    }
+  }
+}
+
+function highlightTableRows(tbody, map) {
+  const walker = document.createTreeWalker(tbody, NodeFilter.SHOW_ELEMENT);
+  let node;
+  while ((node = walker.nextNode())) {
+    if (node.nodeName !== "TR") continue;
+    if (node.classList.contains("invisible")) continue;
+    const state = node.querySelector(
+      "div.work-item-state-name > span",
+    ).textContent;
+    const replacement = map[state];
+    if (replacement) {
+      node.style.background = replacement;
+    }
+  }
+}
+
+// Helper Methods
 function waitFor(selector) {
   return new Promise((resolve) => {
     if (document.querySelector(selector)) {
@@ -33,19 +62,6 @@ function waitFor(selector) {
     });
   });
 }
-
-async function patch(original, replacement) {
-  await waitFor("table.backlog-tree");
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  let node;
-  while ((node = walker.nextNode())) {
-    if (node.textContent.includes(original)) {
-      node.textContent = node.textContent.replaceAll(original, replacement);
-    }
-  }
-}
-
-GM.registerMenuCommand("Edit Patch", showModal);
 
 function toDom(html) {
   const range = document.createRange();
@@ -95,7 +111,7 @@ async function showModal() {
       alert("Invalid JSON!");
       return;
     }
-    await GM.setValue("SPRINT_VIEW_PATCH", editor.json_value);
+    await GM.setValue("attn-xplor.ado.backlog.utils", editor.json_value);
     dialog.close();
   };
 
@@ -139,14 +155,20 @@ async function showModal() {
 }
 
 async function getPatch() {
-  return await GM.getValue("SPRINT_VIEW_PATCH", {});
+  return await GM.getValue("attn-xplor.ado.backlog.utils", {});
 }
 
-async function run() {
-  const overrides = await getPatch();
-  for (const [original, replacement] of Object.entries(overrides)) {
-    patch(original, replacement);
+(async () => {
+  const patch = await getPatch();
+  await waitFor("table.backlog-tree");
+
+  const table = document.querySelector("table.backlog-tree");
+  if (Object.keys(patch.textReplacements ?? {}).length > 1) {
+    patchTextContent(table, patch.textReplacements);
   }
-}
 
-run();
+  const tbody = document.querySelector("table.backlog-tree > tbody");
+  if (Object.keys(patch.textReplacements ?? {}).length > 1) {
+    highlightTableRows(tbody, patch.rowColorReplacements);
+  }
+})();

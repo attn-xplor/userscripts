@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Merchant Portal Debug Overlay
 // @namespace    https://github.com/attn-xplor/userscripts
-// @version      1.0.1
+// @version      1.0.2
 // @description  Live stats overlay showing debug information. For example, information pertaining to the selected terminal's vt token.
 // @author       Ismael J Lopez
 // @match        http://localhost:4200/*
@@ -178,7 +178,7 @@
   }
 
   const overlay = document.createElement("div");
-  overlay.id = "xplor-vt-token-timer";
+  overlay.id = "xplor-mp-debug-overlay";
   overlay.style.cssText = [
     "position:fixed",
     "top:8px",

@@ -46,3 +46,22 @@ this util will modify row colors with specified colors.
 ### [Jira](//github.com/attn-xplor/userscripts/raw/refs/heads/trunk/jira.user.js)
 Copies the ticket number (e.g., ITSM-12345) and url as a markdown-friendly link to your clipboard. 
 This is useful for our Merchant Portal MFE Pull Request templates.
+
+### [Merchant Portal Debug Overlay](//github.com/attn-xplor/userscripts/raw/refs/heads/trunk/mp-debug-overlay.user.js)
+A live debug overlay for Merchant Portal (`localhost:4200` and
+`*.clearent.net`). It is meant to grow with whatever metrics or cache
+state we need on-screen; today it only covers virtual-terminal (VT)
+token information — the current need.
+
+The VT view reads the selected terminal from the `xplor.*` session and
+local storage caches (and compares them against the legacy cache
+entries still written alongside them).
+
+#### Usage
+Drag the overlay to move it. Click it to cycle views: **compact** (`E`
+expiry / `S` stale countdowns), **detail** (terminal name, expiry,
+stale, and cache age), and **panel** (selected terminal, expandable
+terminal list, timers, and legacy-cache match checks).
+
+Position and view mode are remembered in `localStorage`. The status
+dot turns amber under two minutes remaining and red once expired.

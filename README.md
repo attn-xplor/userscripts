@@ -34,15 +34,6 @@ Utilities for clearing the cache, but leaves Single Spa import overrides intact.
 Merchant Portal's merchant selector makes it hard to copy the currently-selected
 merchant's DBA and/or HNK. This script copies that information to your clipboard.
 
-### [Azure DevOps](//github.com/attn-xplor/userscripts/raw/refs/heads/trunk/azure-devops.user.js)
-Copies the pipeline name and url as a markdown-friendly link to your clipboard. 
-This is useful for our Merchant Portal MFE Pull Request templates.
-
-### [ADO | Backlog Patch](//github.com/attn-xplor/userscripts/raw/refs/heads/trunk/ado-backlog-patch.user.js)
-Performs DOM string replacements in the Sprint Backlog view of Azure DevOps. This
-allows you to minimize text on the screen, greatly simplifying the view. Additionally,
-this util will modify row colors with specified colors.
-
 ### [Jira](//github.com/attn-xplor/userscripts/raw/refs/heads/trunk/jira.user.js)
 Copies the ticket number (e.g., ITSM-12345) and url as a markdown-friendly link to your clipboard. 
 This is useful for our Merchant Portal MFE Pull Request templates.

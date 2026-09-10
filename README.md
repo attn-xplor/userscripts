@@ -28,7 +28,10 @@ The userscript will *merge* your patch with the main config: properties from the
 Copies your current Okta Access Token to your clipboard. Useful for Postman requests where you need a Bearer token.
 
 ### [Cache Utilities](//github.com/attn-xplor/userscripts/raw/refs/heads/trunk/cache-utils.user.js)
-Utilities for clearing the cache, but leaves Single Spa import overrides intact.
+Utilities for clearing browser storage while leaving your module federation
+application overrides (`MOD_FED_APPLICATION_OVERRIDES`) and TanStack Query Devtools
+preferences intact. Use `Edit Local Exclusions` from the Violentmonkey menu to
+preserve additional `localStorage` keys.
 
 ### [HNK Utilities](//github.com/attn-xplor/userscripts/raw/refs/heads/trunk/hnk-utils.user.js)
 Merchant Portal's merchant selector makes it hard to copy the currently-selected

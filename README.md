@@ -59,3 +59,17 @@ terminal list, timers, and legacy-cache match checks).
 
 Position and view mode are remembered in `localStorage`. The status
 dot turns amber under two minutes remaining and red once expired.
+
+### [ngDevMode Patch](//github.com/attn-xplor/userscripts/raw/refs/heads/trunk/ng-dev-mode-patch.user.js)
+Works around `ReferenceError: ngDevMode is not defined` when running MFEs under
+Native Federation. Angular's compiler emits bare `ngDevMode` references (for
+`signal()`, `input()`, `computed()`, and various dev-mode assertions), but
+Native Federation's dev builds don't always hand esbuild a `define` for it, so
+a remote chunk that evaluates one of those references first blows up on load.
+
+The script defines `window.ngDevMode` as an empty object at `document-start`,
+before any application code runs, which is what Angular itself does in a normal
+dev build. It uses `??=`, so it leaves an already-defined value alone.
+
+Only needed until the Native Federation version we're on ships the fix
+([module-federation-plugin#1089](https://github.com/angular-architects/module-federation-plugin/pull/1089)).

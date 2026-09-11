@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Merchant Portal Debug Overlay
 // @namespace    https://github.com/attn-xplor/userscripts
-// @version      1.0.2
+// @version      1.0.3
 // @description  Live stats overlay showing debug information. For example, information pertaining to the selected terminal's vt token.
 // @author       Ismael J Lopez
 // @match        http://localhost:4200/*
@@ -32,6 +32,7 @@
   const MODE_KEY = "xplor.debug.overlay.mode";
   const MODES = ["compact", "detail", "panel"];
   const DRAG_THRESHOLD_PX = 4;
+  const TERMINAL_LIST_MAX_HEIGHT_PX = 180;
   const LOG_TO_CONSOLE = false;
 
   const GREEN = "#7bdcb5";
@@ -390,8 +391,24 @@
 
     if (terminalsExpanded) {
       const list = document.createElement("div");
-      list.style.cssText =
-        "display:flex;flex-direction:column;gap:2px;padding:2px 0 2px 10px;opacity:.85";
+      // Dragging is suppressed inside the list so a touch swipe scrolls it
+      // instead of moving the overlay, and the page keeps its own scroll
+      // position once the list reaches either end.
+      list.setAttribute("data-no-drag", "");
+      list.style.cssText = [
+        "display:flex",
+        "flex-direction:column",
+        "gap:2px",
+        "padding:2px 0 2px 10px",
+        "opacity:.85",
+        `max-height:${TERMINAL_LIST_MAX_HEIGHT_PX}px`,
+        "overflow-y:auto",
+        "overflow-x:hidden",
+        "overscroll-behavior:contain",
+        "touch-action:pan-y",
+        "scrollbar-width:thin",
+        "scrollbar-color:rgba(255,255,255,.35) transparent",
+      ].join(";");
       for (const terminal of data.cache.list) {
         const entry = document.createElement("div");
         const isSelected =
